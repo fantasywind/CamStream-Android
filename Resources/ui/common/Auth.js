@@ -125,6 +125,12 @@ function Auth() {
 				device_name.addEventListener('return', submit_passcode);
 			}
 		},
+		onerror: function (e) {
+			alert('無法與伺服器連線，請確認伺服器狀態。');
+			status.setText('伺服器離線中');
+			status.setColor('red');
+			refresh.show();
+		},
 		timeout: 5000
 	})
 	get_passcode.open("GET", 'http://220.128.105.72/auth/check');
